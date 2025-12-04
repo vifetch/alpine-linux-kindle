@@ -10,7 +10,7 @@ deploy_alpine()
 	echo "Downloading from GitHub"
 	lipc-set-prop com.lab126.powerd preventScreenSaver 1
 
-	ALPINE_URL="$(curl -s https://api.github.com/repos/huck0031/alpine-linux-kindle/releases/latest \
+	ALPINE_URL="$(curl -s https://api.github.com/repos/vifetch/alpine-linux-kindle/releases/latest \
 	  | grep browser_download_url \
 	  | grep alpine \
 	  | head -1 \
