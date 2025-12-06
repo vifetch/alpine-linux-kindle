@@ -13,7 +13,7 @@ press_any_key()
 		fi
 	done
 }
-
+# TODO: Replace with updated launcher?
 DOWNLOAD_URL="$(curl -s https://api.github.com/repos/schuhumi/alpine_kindle_kual/releases/latest \
   | grep browser_download_url \
   | grep alpine_kindle_kual.zip \

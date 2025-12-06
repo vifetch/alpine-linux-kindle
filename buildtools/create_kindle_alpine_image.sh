@@ -17,11 +17,11 @@ apk update
 apk upgrade
 cat /etc/alpine-release
 apk add xorg-server-xephyr xwininfo xdotool xinput dbus-x11 sudo bash nano git
-apk add desktop-file-utils gtk-engines consolekit gtk-murrine-engine caja caja-extensions marco gnome-themes-extra
+apk add desktop-file-utils gtk-engines consolekit2 gtk-murrine-engine caja caja-extensions marco
 apk add \$(apk search mate -q | grep -v '\-dev' | grep -v '\-lang' | grep -v '\-doc')
 apk add \$(apk search -q ttf- | grep -v '\-doc')
 apk add onboard
-apk add xournalpp lynx htop fastfetch shutter
+apk add xournalpp lynx htop fastfetch scrot gnome-screenshot
 adduser alpine -D
 echo -e \"alpine\nalpine\" | passwd alpine
 echo '%sudo ALL=(ALL) ALL' >> /etc/sudoers
@@ -29,13 +29,9 @@ addgroup sudo
 addgroup alpine sudo
 su alpine -c \"cd ~
 git init
-git remote add origin https://github.com/huck0031/alpine_kindle_dotfiles
+git remote add origin https://github.com/vifetch/alpine_kindle_dotfiles
 git pull origin master
 git reset --hard origin/master
-
-
-dconf load /org/mate/ < ~/.config/org_mate.dconf.dump
-dconf load /org/onboard/ < ~/.config/org_onboard.dconf.dump\"
 
 export XDG_RUNTIME_DIR="/tmp/runtime-$(id -u)"
 mkdir -p "$XDG_RUNTIME_DIR"
@@ -43,6 +39,9 @@ chmod 700 "$XDG_RUNTIME_DIR"
 
 # Use a temporary directory for DBUS
 eval $(dbus-launch --sh-syntax)
+
+printf "gnome\n" | setup-desktop
+
 gsettings set org.mate.interface window-scaling-factor 2
 gsettings set org.gnome.desktop.interface gtk-theme 'HighContrast'
 gsettings set org.gnome.desktop.interface icon-theme 'HighContrast'
@@ -76,7 +75,7 @@ rm /tmp/APKINDEX /tmp/APKINDEX.tar.gz /tmp/DESCRIPTION # Remove what we download
 echo "Version of apk-tools-static is: $APKVER"
 echo "Downloading apk-tools-static"
 curl "$REPO/v3.22/main/armv7/apk-tools-static-$APKVER.apk" --output "/tmp/apk-tools-static.apk"
-tar -xzf "/tmp/apk-tools-static.apk" -C /tmp # extract apk-tools-static to /tmp
+tar -xvzf "/tmp/apk-tools-static.apk" -C /tmp 2>&1 | grep -v "Ignoring unknown" # extract apk-tools-static to /tmp
 
 
 # CREATING IMAGE FILE

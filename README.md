@@ -24,7 +24,7 @@ To build your own Alpine release, you must have the following:
 
 1. Download buildtools/
 2. Start by running create_kindle_alpine_image.sh to create your alpine.ext3 file. This is the filesystem your Kindle is chrooting into. (Note: Many build issues in this stage are a result of your required qemu environment!)
-3. After being dropped into the chroot shell, currently you must add any packages you may want (xournal++, fastfetch, lynx, etc) but notably you must run setup-desktop (MATE recommended) in order to have a working DE. Once you have everything you'd like installed to your filesystem, you can exit
+3. After being dropped into the chroot shell, currently you must add any packages you may want (xournal++, fastfetch, lynx, etc) but notably you must run setup-desktop in order to have a working DE. Once you have everything you'd like installed to your filesystem, you can exit
 4. Run create_release.sh to bundle the filesystem along with alpine.conf and alpine.sh
 
 # Why?
