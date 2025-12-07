@@ -1,5 +1,5 @@
 # Alpine Linux on Kindle
-A project to bring modern Alpine Linux 32-bit to Kindle devices (running armhf/armv7), currently including Alpine v3.22
+A project to bring modern Alpine Linux 32-bit to Kindle devices (with a focus on compatibility for the Paperwhite 5, but many others may work) with support for the latest branch
 
 # Screenshots (WIP)
 
@@ -36,12 +36,12 @@ Finding the amazing work several years ago from [schuhumi](https://github.com/sc
 using code from: [schuhumi/alpine_kindle](https://github.com/schuhumi/alpine_kindle) & [schuhumi/alpine_kindle_kauh](https://github.com/schuhumi/alpine_kindle_kual)
 
 # Troubleshooting
-- If you are unable to load into Alpine *except* through a shell, ensure your DE is installed (run setup-desktop through Kterm then run Alpine again from KAUL). You can also run startgui.sh from the chroot shell
+- If you are unable to load into Alpine *except* through a shell, ensure your DE is installed (run setup-desktop through Kterm then run Alpine again from KAUL). You can also run `./startgui.sh` from the chroot shell (Drop into Alpine Linux shell)
 - When logging out of the chrooted environment through X11, you may be brought to a blank screen forever. Simply hold the power button on your Kindle for about 10 seconds and it should reboot back to the Kindle framework without any lasting issues.
 - The terminal is *probably* not broken, you just currently need to adjust the colors as the contrast of the Kindle cannot show the default color profile.
 
 # TODO
-- Replace zip compression with tarball
+- Replace zip compression with tarball (alternatively, zerofree?)
 - Include version testing within KAUL
 - Auto set high-contrast theme, white background
 - Fix terminal visibility
